@@ -1,0 +1,8 @@
+# stop all containers
+alias dstopall="docker stop $(docker ps -q)"
+
+# remove all containers
+alias drmall="docker rm $(docker ps -a -q)"
+
+#remove all images
+alias drmiall="docker rmi $(docker images -q)"

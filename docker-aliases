@@ -6,3 +6,6 @@ alias drmall="docker rm $(docker ps -a -q)"
 
 #remove all images
 alias drmiall="docker rmi $(docker images -q)"
+
+#remove all containers of image
+drm() { docker rm (docker ps -a |grep $1 |awk '{print $1}') }

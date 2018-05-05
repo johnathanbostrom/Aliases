@@ -1,17 +1,20 @@
 # stop all containers
 alias dstopall="docker stop $(docker ps -q)"
 
+#list all containers of image
+dlc() { docker ps -a $2 -f ancestor=$1; };
+
 # remove all containers
-alias drmall="docker rm $(docker ps -a -q)"
+drmall() { docker rm $(docker ps -a -q -f ${1:-""}); };
+
+#remove all containers of image
+drm() { docker rm $(dlc $1 -q); };
+
+#stop all containers of image
+dstop() { docker stop $(dlc $1 -q);};
+
+#stop and remove all containers of image
+dsrm() { dstop $1; drm $1; };
 
 #remove all images
 alias drmiall="docker rmi $(docker images -q)"
-
-#remove all containers of image
-drm() { docker rm $(docker ps -a -q -f ancestor=$1); };
-
-#stop and remove all containers of image
-dsrm() { docker stop $(docker ps -a -q -f ancestor=$1); docker rm $(docker ps -a -q -f ancestor=$1); };
-
-#list all containers of image
-dlc() { docker ps -a -f ancestor=$1; };

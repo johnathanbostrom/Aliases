@@ -8,4 +8,10 @@ alias drmall="docker rm $(docker ps -a -q)"
 alias drmiall="docker rmi $(docker images -q)"
 
 #remove all containers of image
-drm() { docker rm (docker ps -a -q -f ancestor=$1) }
+drm() { docker rm $(docker ps -a -q -f ancestor=$1); };
+
+#stop and remove all containers of image
+dsrm() { docker stop $(docker ps -a -q -f ancestor=$1); docker rm $(docker ps -a -q -f ancestor=$1); };
+
+#list all containers of image
+dlc() { docker ps -a -f ancestor=$1; };

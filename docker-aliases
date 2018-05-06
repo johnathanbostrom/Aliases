@@ -18,3 +18,6 @@ dsrm() { dstop $1; drm $1; };
 
 #remove all images
 alias drmiall="docker rmi $(docker images -q)"
+
+#remove images and all containers for it
+dnuke() { dstop #1; drm $1; docker rmi $1; };

@@ -1,0 +1,21 @@
+###########
+#.gitconfig
+###########
+
+hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+st = status
+co = checkout
+amend = commit --amend --no-edit
+
+########
+#.bashrc
+########
+
+#add to git ignore
+gi() { input=$1 && printf "\n$input" >> $(git rev-parse --show-toplevel)"/.gitignore"; };
+
+#git commit with message, then show status
+gcms() { git commit -m "$@"; git status; };
+
+#git commit and push
+gcp() {git commit -m "$@"; git push;}

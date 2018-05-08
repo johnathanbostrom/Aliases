@@ -13,9 +13,11 @@ amend = commit --amend --no-edit
 
 #add to git ignore
 gi() { input=$1 && printf "\n$input" >> $(git rev-parse --show-toplevel)"/.gitignore"; };
+#ignore =  "!f() { input=$1 && printf "\n$input" >> $(git rev-parse --show-toplevel)"/.gitignore"; }; f"
 
 #git commit with message, then show status
 gcms() { git commit -m "$@"; git status; };
+#cms = "!f() { git commit -m "$@"; git status; }; f"
 
 #git commit and push
 gcp() {git commit -m "$@"; git push;}

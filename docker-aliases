@@ -19,5 +19,17 @@ dsrm() { dstop $1; drm $1; };
 #remove all images
 alias drmiall="docker rmi $(docker images -q)"
 
-#remove images and all containers for it
+#remove image and all containers for it
 dnuke() { dstop $1; drm $1; docker rmi $1; };
+
+#remove dangling images, stopping and removing containers as needed
+ddangle () 
+  { images="$(docker images -q --filter 'dangling=true')"
+    for i in $images; do
+        echo "stopping containers: " 
+        dstop $i
+        echo "removing contianers: "
+        drm $i
+        docker rmi $i
+    done
+  }

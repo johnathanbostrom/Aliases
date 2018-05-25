@@ -23,4 +23,4 @@ alias drmiall="docker rmi $(docker images -q)"
 dnuke() { dstop $1; drm $1; docker rmi $1; };
 
 #remove all dangling images
-alias ddangle = "dstop $(docker images -q --filter \"dangling=true\"); drm $(docker images -q --filter \"dangling=true\"); docker rmi $(docker images -q --filter \"dangling=true\")"
+alias ddangle="dstop $(docker images -q --filter "dangling=true"); drm $(docker images -q --filter "dangling=true"); docker rmi $(docker images -q --filter "dangling=true")"
